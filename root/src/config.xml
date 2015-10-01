@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<widget xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="{%= vendor %}" name="{{%= widget_name %}" version="{%= version %}">
+<details>
+  <title>{%= project_name %}</title>
+  <homepage>{%= homepage %}</homepage>
+  <authors>{%= author_name %}</authors>
+  <email>{%= author_email %}</email>
+  <image></image>
+  <smartphoneimage></smartphoneimage>
+  <description>{%= description %}</description>
+  <longdescription>DESCRIPTION.md</longdescription>
+  <changelog>doc/changelog.md</changelog>
+  <doc>doc/index.md</doc>
+  <license>{%= licenses %}</license>
+  <issuetracker>{%= bugs %}</issuetracker>
+</details>
+{% if (ngsi || true) { %}
+<requirements>
+  {% if (ngsi) { %}<feature name="NGSI">{% }%}
+</requirements>
+{% }%}
+<preferences>
+</preferences>
+<wiring>
+</wiring>
+<contents src="index.html"/>
+<rendering height="47" width="10"/>
+</widget>

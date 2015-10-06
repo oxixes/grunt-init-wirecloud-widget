@@ -9,7 +9,7 @@
 'use strict';
 
 // Basic template description.
-exports.description = 'Create a template for Mashup widgets';
+exports.description = 'Create a WireCloud widget with grunt-init, including Jasmine unit tests.'
 
 
 // Template-specific notes to be displayed before question prompts.
@@ -74,8 +74,8 @@ exports.template = function(grunt, init, done) {
             default: "Y/n",
             sanitize: sanitizeComparer(/^\s*y[es\s]*/i)
         },
-        init.prompt("author_name", "Author Name"),
-        init.prompt("author_email", "authoremail@domain.com"),
+        init.prompt("author_name"),
+        init.prompt("author_email"),
         init.prompt("name", "short_project_name"),
         // Widget Name
         {

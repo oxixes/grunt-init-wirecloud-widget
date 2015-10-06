@@ -126,7 +126,7 @@ exports.template = function(grunt, init, done) {
 
         if (!props.js) {
             devDependencies["typescript"] = "^1.5.0";
-            console.log("Not implemented yet for typescript");
+            // console.log("Not implemented yet for typescript");
             // return;
         }
 
@@ -140,8 +140,6 @@ exports.template = function(grunt, init, done) {
                 exportsOverride["jquery"] = {
                     "js": "dist/jquery.min.js"
                 };
-                // pockage
-                devDependencies["jquery"] = "^2.1.1";
                 // Test with jasmine have to be checked?
                 // devDependencies["jasmine-jquery"] = "~2.0.6";
             }
@@ -157,6 +155,7 @@ exports.template = function(grunt, init, done) {
             }
 
             if (props.jquery) {
+                devDependencies["jquery"] = "^2.1.1";
                 devDependencies["jasmine-jquery"] = "~2.1.0";
             }
 
@@ -180,8 +179,6 @@ exports.template = function(grunt, init, done) {
         var files = init.filesToCopy(props);
         init.addLicenseFiles(files, props.licenses);
 
-        console.log(files);
-
         // Actually copy (and process) files.
         init.copyAndProcess(files, props);
 
@@ -204,6 +201,9 @@ exports.template = function(grunt, init, done) {
         nobj.vendor = props.vendor;
         nobj.keywords = ["widget"];
         nobj.devDependencies = devDependencies;
-        init.writePackageJSON('package.json', nobj);
+        init.writePackageJSON('package.json', nobj, function(pkg, props) {
+            pkg.vendor = props.vendor;
+            return pkg;
+        });
     });
 };

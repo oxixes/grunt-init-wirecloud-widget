@@ -44,7 +44,7 @@ declare module "NGSI" {
     export class Connection{
         constructor(url: string, options?: ConnectionOps);
 
-         createRegistration(entities: Entity[], attributes: Attribute[], duration: Duration, providingApplication: string, options?: CreateRegOps): void;
+        createRegistration(entities: Entity[], attributes: Attribute[], duration: Duration, providingApplication: string, options?: CreateRegOps): void;
 
         updateRegistration(regID: string, entities: Entity[], attributes: Attribute[], duration: Duration, providingApplication: string, options?: CreateRegOps): void;
 

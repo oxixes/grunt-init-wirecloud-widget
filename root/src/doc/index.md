@@ -15,7 +15,3 @@
 ## Reference
 
 - [FIWARE Mashup](https://mashup.lab.fiware.org/)
-
-## Copyright and License
-
-{%= licenses %}

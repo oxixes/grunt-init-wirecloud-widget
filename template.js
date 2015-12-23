@@ -97,12 +97,6 @@ exports.template = function(grunt, init, done) {
         init.prompt('homepage'),
         init.prompt('bugs'),
         init.prompt('licenses'),
-        // {
-        //     name: "widget_name",
-        //     message: "Widget name",
-        //     default: "DefaultName",
-        //     warning: ""
-        // },
         {
             name: "vendor",
             message: "Vendor name",
@@ -120,7 +114,6 @@ exports.template = function(grunt, init, done) {
 
     ], function(err, props){
         var exportsOverride = {};
-        props.widget_name = props.name; // remove widget_name
         props.jsname = capitalizeAndRemoveUnderscore(props.name);
         props.bower = true; // Change way to determine bower?
         props.ngsi = false; // ??

@@ -1,6 +1,15 @@
-/*global MashupPlatform*/
-/*exported {%= jsname %}*/
+/*
+ * {%= name %}
+ * {%= homepage %}
+ *
+ * Copyright (c) {%= grunt.template.today('yyyy') %} {%= vendor_title %}
+ * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
+ */
+
+/* exported {%= jsname %} */
+
 var {%= jsname %} = (function () {
+
     "use strict";
 
     /*********************************************************

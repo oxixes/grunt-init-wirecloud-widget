@@ -67,4 +67,5 @@ If everything goes well, you will find a wgt file in the `dist` folder.
 
 ## Copyright and License
 
-Copyright (c) 2015 {%= vendor_title %}
+Copyright (c) {%= grunt.template.today('yyyy') %} {%= vendor_title %}
+Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.

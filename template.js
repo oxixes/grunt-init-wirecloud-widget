@@ -8,6 +8,8 @@
 
 'use strict';
 
+var path = require('path');
+
 // Basic template description.
 exports.description = 'Create a WireCloud widget with grunt-init, including Jasmine unit tests.'
 
@@ -76,7 +78,13 @@ exports.template = function(grunt, init, done) {
         },
         init.prompt("author_name"),
         init.prompt("author_email"),
-        init.prompt("name", "short_project_name"),
+        {
+            name: "name",
+            message: "Project name",
+            default: function (value, data, done) {
+                done(null, path.basename(process.cwd()).replace(/-widget$/, ''));
+            }
+        },
         // Widget Name
         {
             name: "project_name",

@@ -165,7 +165,7 @@ exports.template = function(grunt, init, done) {
             }
 
             // if test?
-            devDependencies["grunt-contrib-jasmine"] = "^0.8.1";
+            devDependencies["grunt-contrib-jasmine"] = "^1.0.0";
             devDependencies["grunt-template-jasmine-istanbul"] = "^0.3.0";
 
             devDependencies["grunt-jsbeautifier"] = "~0.2.10";

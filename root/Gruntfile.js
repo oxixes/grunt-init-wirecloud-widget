@@ -14,87 +14,79 @@ module.exports = function (grunt) {
 
         pkg: grunt.file.readJSON('package.json'),
 
-        {% if (bower) { %}
-         bower: {
-             install: {
-                 options: {
-                     layout: function (type, component, source) {
-                         return type;
-                     },
-                     targetDir: './build/lib/lib'
-                 }
-             }
-         },
-         {% }%}
+        {% if (bower) { %}bower: {
+            install: {
+                options: {
+                    layout: function (type, component, source) {
+                        return type;
+                    },
+                    targetDir: './build/lib/lib'
+                }
+            }
+        },{% }%}
 
-        {% if (js) { %}
-         jshint: {
-             options: {
-                 jshintrc: true
-             },
-             all: {
-                 files: {
-                     src: ['src/js/**/*.js']
-                 }
-             },
-             grunt: {
-                 options: {
-                     jshintrc: '.jshintrc-node'
-                 },
-                 files: {
-                     src: ['Gruntfile.js']
-                 }
-             },
-             test: {
-                 options: {
-                     jshintrc: '.jshintrc-jasmine'
-                 },
-                 files: {
-                     src: ['src/test/**/*.js', '!src/test/fixtures/']
-                 }
-             }
-         },
+        {% if (js) { %}jshint: {
+            options: {
+                jshintrc: true
+            },
+            all: {
+                files: {
+                    src: ['src/js/**/*.js']
+                }
+            },
+            grunt: {
+                options: {
+                    jshintrc: '.jshintrc-node'
+                },
+                files: {
+                    src: ['Gruntfile.js']
+                }
+            },
+            test: {
+                options: {
+                    jshintrc: '.jshintrc-jasmine'
+                },
+                files: {
+                    src: ['src/test/**/*.js', '!src/test/fixtures/']
+                }
+            }
+        },
 
-         jscs: {
-             widget: {
-                 src: 'src/js/**/*.js',
-                 options: {
-                     config: ".jscsrc"
-                 }
-             },
-             grunt: {
-                 src: 'Gruntfile.js',
-                 options: {
-                     config: ".jscsrc"
-                 }
-             }
-         },
+        jscs: {
+            widget: {
+                src: 'src/js/**/*.js',
+                options: {
+                    config: ".jscsrc"
+                }
+            },
+            grunt: {
+                src: 'Gruntfile.js',
+                options: {
+                    config: ".jscsrc"
+                }
+            }
+        },{% } else { %}typescript: {
+            base: {
+                src: ['src/ts/*.ts'],
+                dest: 'src/js',
+                options: {
+                    module: 'commonjs', // amd or commonjs
+                    target: 'es5', // or es3
+                    // basePath: '',
+                    sourceMap: true,
+                    declaration: true
+                }
+            }
+        },
 
-         {% } else { %}
-
-         typescript: {
-             base: {
-                 src: ['src/ts/*.ts'],
-                 dest: 'src/js',
-                 options: {
-                     module: 'commonjs', //amd or commonjs
-                     target: 'es5', //or es3
-                     // basePath: '',
-                     sourceMap: true,
-                     declaration: true
-                 }
-             }
-         },
-
-         tslint: {
-             options: {
-                 configuration: grunt.file.readJSON("tslint.json")
-             },
-             files: {
-                 src: ['src/ts/*.ts']
-             }
-         },
-         {% }%}
+        tslint: {
+            options: {
+                configuration: grunt.file.readJSON("tslint.json")
+            },
+            files: {
+                src: ['src/ts/*.ts']
+            }
+        },{% }%}
 
         copy: {
             main: {
@@ -256,9 +248,9 @@ module.exports = function (grunt) {
     {% if (wirecloud) { %}grunt.loadNpmTasks('grunt-wirecloud');{% }%}
     {% if (bower) { %}grunt.loadNpmTasks('grunt-bower-task');{% }%}
     {% if (js){ %}grunt.loadNpmTasks('grunt-contrib-jshint');
-     grunt.loadNpmTasks('grunt-contrib-jasmine'); // when test?
-     grunt.loadNpmTasks('grunt-jscs');{% } else { %}grunt.loadNpmTasks('grunt-tslint');
-     grunt.loadNpmTasks('grunt-typescript');{% }%}
+    grunt.loadNpmTasks('grunt-contrib-jasmine'); // when test?
+    grunt.loadNpmTasks('grunt-jscs');{% } else { %}grunt.loadNpmTasks('grunt-tslint');
+    grunt.loadNpmTasks('grunt-typescript');{% }%}
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -269,15 +261,14 @@ module.exports = function (grunt) {
     grunt.registerTask('test', [
         {% if (bower) { %}'bower:install',{% }%}
         {% if (js) { %}'jshint',
-         'jshint:grunt',
-         'jscs',
-         'jasmine:coverage'
-         {% } else { %}'tslint',{% }%}
+        'jshint:grunt',
+        'jscs',
+        'jasmine:coverage'{% } else { %}'tslint',{% }%}
     ]);
 
     grunt.registerTask('build', [
         'clean:temp',
-        {% if(!js) { %}'replace:exports',{% }%}
+        {% if (!js) { %}'replace:exports',{% }%}
         'copy:main',
         'strip_code',
         'replace:version',
@@ -287,14 +278,14 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'jsbeautifier',
         {% if (!js) { %}'typescript:base',
-         'strip_code:imports',{% }%}
+        'strip_code:imports',{% }%}
         'test',
         'build'
     ]);
 
     grunt.registerTask('publish', [
-        'default'
-        {% if (wirecloud) { %},
-         'wirecloud'{% }%}
+        'default'{% if (wirecloud) { %},
+        'wirecloud'{% }%}
     ]);
+
 };

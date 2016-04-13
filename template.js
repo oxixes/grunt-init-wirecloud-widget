@@ -117,7 +117,6 @@ exports.template = function(grunt, init, done) {
         props.jsname = capitalizeAndRemoveUnderscore(props.name);
         props.bower = true; // Change way to determine bower?
         props.ngsi = false; // ??
-        props.wirecloud = false; // ??
         var bowerdeps = {};
         var bowerdevDependencies = {};
         var devDependencies = {
@@ -175,6 +174,7 @@ exports.template = function(grunt, init, done) {
             devDependencies["grunt-strip-code"] = "^0.1.2";
             devDependencies["grunt-text-replace"] = "~0.4.0";
 
+            devDependencies["grunt-wirecloud"] = "^0.9.0";
             devDependencies["wirecloud-config-parser"] = "^0.2.0";
         }
 

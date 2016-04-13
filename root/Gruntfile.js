@@ -5,8 +5,9 @@
  * Copyright (c) {%= grunt.template.today('yyyy') %} {%= vendor_title %}
  * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
  */
- var ConfigParser = require('wirecloud-config-parser');
- var parser = new ConfigParser('src/config.xml');
+
+var ConfigParser = require('wirecloud-config-parser');
+var parser = new ConfigParser('src/config.xml');
 
 module.exports = function (grunt) {
 
@@ -14,9 +15,9 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
 
-        metadata: parser.getData(),
+        metadata: parser.getData(),{% if (bower) { %}
 
-        {% if (bower) { %}bower: {
+        bower: {
             install: {
                 options: {
                     layout: function (type, component, source) {
@@ -243,8 +244,8 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-wirecloud');
-    {% if (bower) { %}grunt.loadNpmTasks('grunt-bower-task');{% }%}
-    {% if (js){ %}grunt.loadNpmTasks('grunt-contrib-jshint');
+    {% if (bower) { %}grunt.loadNpmTasks('grunt-bower-task');
+    {% }%}{% if (js){ %}grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-jasmine'); // when test?
     grunt.loadNpmTasks('grunt-jscs');{% } else { %}grunt.loadNpmTasks('grunt-tslint');
     grunt.loadNpmTasks('grunt-typescript');{% }%}
@@ -264,16 +265,16 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-        'clean:temp',
-        {% if (!js) { %}'replace:exports',{% }%}
+        'clean:temp',{% if (!js) { %}
+        'replace:exports',{% }%}
         'copy:main',
         'strip_code',
         'compress:widget'
     ]);
 
     grunt.registerTask('default', [
-        'jsbeautifier',
-        {% if (!js) { %}'typescript:base',
+        'jsbeautifier',{% if (!js) { %}
+        'typescript:base',
         'strip_code:imports',{% }%}
         'test',
         'build'

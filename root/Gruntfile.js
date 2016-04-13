@@ -5,6 +5,8 @@
  * Copyright (c) {%= grunt.template.today('yyyy') %} {%= vendor_title %}
  * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
  */
+ var ConfigParser = require('wirecloud-config-parser');
+ var parser = new ConfigParser('src/config.xml');
 
 module.exports = function (grunt) {
 
@@ -12,7 +14,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
 
-        pkg: grunt.file.readJSON('package.json'),
+        metadata: parser.getData(),
 
         {% if (bower) { %}bower: {
             install: {
@@ -113,7 +115,7 @@ module.exports = function (grunt) {
             widget: {
                 options: {
                     mode: 'zip',
-                    archive: 'dist/<%= pkg.vendor %>_<%= pkg.name %>_<%= pkg.version %>.wgt'
+                    archive: 'dist/<%= metadata.vendor %>_<%= metadata.name %>_<%= metadata.version %>.wgt'
                 },
                 files: [
                     {
@@ -172,17 +174,9 @@ module.exports = function (grunt) {
                     jslintHappy: true
                 }
             }
-        },
+        },{% if (!js) { %}
 
         replace: {
-            version: {
-                overwrite: true,
-                src: ['src/config.xml'],
-                replacements: [{
-                    from: /version=\"[0-9]+\.[0-9]+\.[0-9]+(([ab]|rc)?[0-9]+)?(-dev)?\"/g,
-                    to: 'version="<%= pkg.version %>"'
-                }]
-            }{% if(!js) { %},
               exports: {
                   overwrite: true,
                   src: ['src/js/*.js'],
@@ -203,8 +197,8 @@ module.exports = function (grunt) {
                           return newexpr;
                       }
                   }]
-              }{% }%}
-        },
+              }
+        },{% }%}
 
         jasmine: {
             test:{
@@ -271,7 +265,6 @@ module.exports = function (grunt) {
         {% if (!js) { %}'replace:exports',{% }%}
         'copy:main',
         'strip_code',
-        'replace:version',
         'compress:widget'
     ]);
 

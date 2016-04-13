@@ -174,6 +174,8 @@ exports.template = function(grunt, init, done) {
             devDependencies["grunt-contrib-copy"] = "^0.8.0";
             devDependencies["grunt-strip-code"] = "^0.1.2";
             devDependencies["grunt-text-replace"] = "~0.4.0";
+
+            devDependencies["wirecloud-config-parser"] = "^0.2.0";
         }
 
         // Files to copy (and process).

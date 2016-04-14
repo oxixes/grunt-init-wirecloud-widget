@@ -11,12 +11,11 @@
 var path = require('path');
 
 // Basic template description.
-exports.description = 'Create a WireCloud widget with grunt-init, including Jasmine unit tests.'
+exports.description = 'Create a WireCloud widget with grunt-init, including Jasmine unit tests.';
 
 
 // Template-specific notes to be displayed before question prompts.
 exports.notes = '';
-
 
 // Any existing file or directory matching this wildcard will cause a warning.
 exports.warnOn = '*';
@@ -48,6 +47,7 @@ var capitalizeAndRemoveUnderscore = function capitalizeAndRemoveUnderscore(old) 
         if (p2) return p2.toUpperCase();
         return p1.toLowerCase();
     });
+
     return t.charAt(0).toUpperCase() + t.slice(1);
 };
 
@@ -199,7 +199,7 @@ exports.template = function(grunt, init, done) {
 
         // Write package.json :)
         var nobj = {};
-        nobj.description = "This package.json file is only used for installing npm dependencies. But this is not an installable node package, but a WireCloud widget. Take a look into src/config.xml for more details about this widget"
+        nobj.description = "This package.json file is only used for installing npm dependencies. But this is not an installable node package, but a WireCloud widget. Take a look into src/config.xml for more details about this widget";
         nobj.devDependencies = devDependencies;
         init.writePackageJSON('package.json', nobj, function(pkg, props) {
             pkg.private = true;

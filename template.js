@@ -147,8 +147,8 @@ exports.template = function(grunt, init, done) {
 
         if (props.isgrunt){
             if (props.js) {
-                devDependencies["grunt-contrib-jshint"] = "^0.10.0";
-                devDependencies["grunt-jscs"] = "^1.2.0";
+                devDependencies["grunt-contrib-jshint"] = "^1.0.0";
+                devDependencies["grunt-jscs"] = "^2.8.0";
             } else {
                 devDependencies["grunt-typescript"] =  "^0.7.0";
                 devDependencies["grunt-tslint"] = "^2.4.0";
@@ -165,13 +165,13 @@ exports.template = function(grunt, init, done) {
 
             // if test?
             devDependencies["grunt-contrib-jasmine"] = "^1.0.0";
-            devDependencies["grunt-template-jasmine-istanbul"] = "^0.3.0";
+            devDependencies["grunt-template-jasmine-istanbul"] = "^0.4.0";
 
             devDependencies["grunt-jsbeautifier"] = "~0.2.10";
-            devDependencies["grunt-contrib-clean"] = "~0.6.0";
-            devDependencies["grunt-contrib-compress"] = "^0.11.0";
-            devDependencies["grunt-contrib-copy"] = "^0.8.0";
-            devDependencies["grunt-strip-code"] = "^0.1.2";
+            devDependencies["grunt-contrib-clean"] = "~1.0.0";
+            devDependencies["grunt-contrib-compress"] = "^1.2.0";
+            devDependencies["grunt-contrib-copy"] = "^1.0.0";
+            devDependencies["grunt-strip-code"] = "^1.0.4";
             devDependencies["grunt-text-replace"] = "~0.4.0";
 
             devDependencies["grunt-wirecloud"] = "^0.9.0";

@@ -11,12 +11,11 @@
 var path = require('path');
 
 // Basic template description.
-exports.description = 'Create a WireCloud widget with grunt-init, including Jasmine unit tests.'
+exports.description = 'Create a WireCloud widget with grunt-init, including Jasmine unit tests.';
 
 
 // Template-specific notes to be displayed before question prompts.
 exports.notes = '';
-
 
 // Any existing file or directory matching this wildcard will cause a warning.
 exports.warnOn = '*';
@@ -48,6 +47,7 @@ var capitalizeAndRemoveUnderscore = function capitalizeAndRemoveUnderscore(old) 
         if (p2) return p2.toUpperCase();
         return p1.toLowerCase();
     });
+
     return t.charAt(0).toUpperCase() + t.slice(1);
 };
 
@@ -147,8 +147,8 @@ exports.template = function(grunt, init, done) {
 
         if (props.isgrunt){
             if (props.js) {
-                devDependencies["grunt-contrib-jshint"] = "^0.10.0";
-                devDependencies["grunt-jscs"] = "^1.2.0";
+                devDependencies["grunt-contrib-jshint"] = "^1.0.0";
+                devDependencies["grunt-jscs"] = "^2.8.0";
             } else {
                 devDependencies["grunt-typescript"] =  "^0.7.0";
                 devDependencies["grunt-tslint"] = "^2.4.0";
@@ -165,13 +165,13 @@ exports.template = function(grunt, init, done) {
 
             // if test?
             devDependencies["grunt-contrib-jasmine"] = "^1.0.0";
-            devDependencies["grunt-template-jasmine-istanbul"] = "^0.3.0";
+            devDependencies["grunt-template-jasmine-istanbul"] = "^0.4.0";
 
             devDependencies["grunt-jsbeautifier"] = "~0.2.10";
-            devDependencies["grunt-contrib-clean"] = "~0.6.0";
-            devDependencies["grunt-contrib-compress"] = "^0.11.0";
-            devDependencies["grunt-contrib-copy"] = "^0.8.0";
-            devDependencies["grunt-strip-code"] = "^0.1.2";
+            devDependencies["grunt-contrib-clean"] = "~1.0.0";
+            devDependencies["grunt-contrib-compress"] = "^1.2.0";
+            devDependencies["grunt-contrib-copy"] = "^1.0.0";
+            devDependencies["grunt-strip-code"] = "^1.0.4";
             devDependencies["grunt-text-replace"] = "~0.4.0";
 
             devDependencies["grunt-wirecloud"] = "^0.9.0";
@@ -199,7 +199,7 @@ exports.template = function(grunt, init, done) {
 
         // Write package.json :)
         var nobj = {};
-        nobj.description = "This package.json file is only used for installing npm dependencies. But this is not an installable node package, but a WireCloud widget. Take a look into src/config.xml for more details about this widget"
+        nobj.description = "This package.json file is only used for installing npm dependencies. But this is not an installable node package, but a WireCloud widget. Take a look into src/config.xml for more details about this widget";
         nobj.devDependencies = devDependencies;
         init.writePackageJSON('package.json', nobj, function(pkg, props) {
             pkg.private = true;

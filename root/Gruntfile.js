@@ -127,8 +127,8 @@ module.exports = function (grunt) {
                             'css/**/*',
                             'doc/**/*',
                             'images/**/*',
-                            'index.html',
-                            {% if(!js) { %}"ts/**/*",{% }%}
+                            'index.html',{% if (!js) { %}
+                            "ts/**/*",{% }%}
                             'config.xml'
                         ]
                     },
@@ -159,7 +159,7 @@ module.exports = function (grunt) {
 
         clean: {
             build: {
-                src: ['build'{% if (bower) { %},'bower_components'{% }%}]
+                src: ['build'{% if (bower) { %}, 'bower_components'{% }%}]
             },
             temp: {
                 src: ['build/src']
@@ -202,16 +202,17 @@ module.exports = function (grunt) {
         },{% }%}
 
         jasmine: {
-            test:{
+            test: {
                 src: ['src/js/*.js', '!src/js/main.js'],
                 options: {
                     specs: 'src/test/js/*Spec.js',
                     helpers: ['src/test/helpers/*.js'],
-                    vendor: [{% if (jquery) { %}'node_modules/jquery/dist/jquery.js',
-                              'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
-                              {% }%}
-                             'node_modules/mock-applicationmashup/lib/vendor/mockMashupPlatform.js',
-                             'src/test/vendor/*.js']
+                    vendor: [{% if (jquery) { %}
+                        'node_modules/jquery/dist/jquery.js',
+                        'node_modules/jasmine-jquery/lib/jasmine-jquery.js',{% }%}
+                        'node_modules/mock-applicationmashup/lib/vendor/mockMashupPlatform.js',
+                        'src/test/vendor/*.js'
+                    ]
                 }
             },
             coverage: {
@@ -221,7 +222,7 @@ module.exports = function (grunt) {
                     specs: '<%= jasmine.test.options.specs %>',
                     vendor: '<%= jasmine.test.options.vendor %>',
                     template: require('grunt-template-jasmine-istanbul'),
-                    templateOptions : {
+                    templateOptions: {
                         coverage: 'build/coverage/json/coverage.json',
                         report: [
                             {type: 'html', options: {dir: 'build/coverage/html'}},
@@ -256,12 +257,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-jsbeautifier');
 
-    grunt.registerTask('test', [
-        {% if (bower) { %}'bower:install',{% }%}
-        {% if (js) { %}'jshint',
+    grunt.registerTask('test', [{% if (bower) { %}
+        'bower:install',{% }%}{% if (js) { %}
+        'jshint',
         'jshint:grunt',
         'jscs',
-        'jasmine:coverage'{% } else { %}'tslint',{% }%}
+        'jasmine:coverage'{% } else { %}
+        'tslint'{% }%}
     ]);
 
     grunt.registerTask('build', [

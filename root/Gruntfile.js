@@ -164,17 +164,6 @@ module.exports = function (grunt) {
             temp: {
                 src: ['build/src']
             }
-        },
-
-        jsbeautifier: {
-            files: ["Gruntfile.js"],
-            options: {
-                js: {
-                    spaceAfterAnonFunction: true,
-                    endWithNewline: false,
-                    jslintHappy: true
-                }
-            }
         },{% if (!js) { %}
 
         replace: {
@@ -255,7 +244,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-strip-code');
     grunt.loadNpmTasks('grunt-text-replace');
-    grunt.loadNpmTasks('grunt-jsbeautifier');
 
     grunt.registerTask('test', [{% if (bower) { %}
         'bower:install',{% }%}{% if (js) { %}
@@ -274,8 +262,7 @@ module.exports = function (grunt) {
         'compress:widget'
     ]);
 
-    grunt.registerTask('default', [
-        'jsbeautifier',{% if (!js) { %}
+    grunt.registerTask('default', [{% if (!js) { %}
         'typescript:base',
         'strip_code:imports',{% }%}
         'test',

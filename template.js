@@ -167,7 +167,6 @@ exports.template = function(grunt, init, done) {
             devDependencies["grunt-contrib-jasmine"] = "^1.0.0";
             devDependencies["grunt-template-jasmine-istanbul"] = "^0.4.0";
 
-            devDependencies["grunt-jsbeautifier"] = "~0.2.10";
             devDependencies["grunt-contrib-clean"] = "~1.0.0";
             devDependencies["grunt-contrib-compress"] = "^1.2.0";
             devDependencies["grunt-contrib-copy"] = "^1.0.0";

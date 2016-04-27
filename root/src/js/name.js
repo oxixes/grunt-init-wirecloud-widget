@@ -24,7 +24,7 @@ var {%= jsname %} = (function () {
     /**********************CONSTRUCTOR***********************/
     /********************************************************/
 
-    var {%= jsname %} = function {%= jsname %} () {
+    var {%= jsname %} = function {%= jsname %}() {
         MashupPlatform.prefs.registerCallback(function (new_preferences) {
 
         }.bind(this));

@@ -164,6 +164,7 @@ exports.template = function(grunt, init, done) {
             }
 
             // if test?
+            devDependencies['grunt'] = '>=0.4.5';
             devDependencies["grunt-contrib-jasmine"] = "^1.0.0";
             devDependencies["grunt-template-jasmine-istanbul"] = "^0.4.0";
 

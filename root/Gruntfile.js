@@ -15,6 +15,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
 
+        isDev: grunt.option('dev') ? '-dev' : '',
         metadata: parser.getData(),{% if (bower) { %}
 
         bower: {
@@ -116,7 +117,7 @@ module.exports = function (grunt) {
             widget: {
                 options: {
                     mode: 'zip',
-                    archive: 'dist/<%= metadata.vendor %>_<%= metadata.name %>_<%= metadata.version %>.wgt'
+                    archive: 'dist/<%= metadata.vendor %>_<%= metadata.name %>_<%= metadata.version %><%= isDev %>.wgt'
                 },
                 files: [
                     {
@@ -187,6 +188,15 @@ module.exports = function (grunt) {
                           return newexpr;
                       }
                   }]
+              },
+
+              version: {
+                  src: 'build/wgt/config.xml',
+                  dest: 'build/wgt/config.xml',
+                  replacements: [{
+                      from: /version=\".*\"/,
+                      to: 'version="<%= metadata.version %><%= isDev %>"'
+                  }]
               }
         },{% }%}
 
@@ -228,7 +238,7 @@ module.exports = function (grunt) {
                 overwrite: false
             },
             publish: {
-                file: 'dist/<%= metadata.vendor %>_<%= metadata.name %>_<%= metadata.version %>.wgt'
+                file: 'dist/<%= metadata.vendor %>_<%= metadata.name %>_<%= metadata.version %><%= isDev %>.wgt'
             }
         }
     });

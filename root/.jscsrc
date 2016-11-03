@@ -13,6 +13,10 @@
         ","
     ],
     "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
+    "disallowSpacesInCallExpression": true,
+    "disallowSpacesInNamedFunctionExpression": {
+        "beforeOpeningRoundBrace": true
+    },
     "disallowSpacesInsideArrayBrackets": true,
     "disallowSpacesInsideObjectBrackets": true,
     "disallowSpacesInsideParentheses": true,
@@ -72,6 +76,9 @@
     ],
     "requireSpacesInAnonymousFunctionExpression": {
         "beforeOpeningRoundBrace": true,
+        "beforeOpeningCurlyBrace": true
+    },
+    "requireSpacesInNamedFunctionExpression": {
         "beforeOpeningCurlyBrace": true
     },
     "requireCurlyBraces": [

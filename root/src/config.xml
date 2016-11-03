@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <widget xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="{%= vendor %}" name="{%= name %}" version="{%= version %}">
+
     <details>
         <title>{%= project_name %}</title>
         <homepage>{%= homepage %}</homepage>
@@ -10,7 +11,7 @@
         <description>{%= description %}</description>
         <longdescription>DESCRIPTION.md</longdescription>
         <changelog>doc/changelog.md</changelog>
-        <doc>doc/index.md</doc>
+        <doc>doc/userguide.md</doc>
         <license>{%= licenses %}</license>
         <issuetracker>{%= bugs %}</issuetracker>
     </details>

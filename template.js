@@ -140,8 +140,6 @@ exports.template = function(grunt, init, done) {
                 exportsOverride["jquery"] = {
                     "js": "dist/jquery.min.js"
                 };
-                // Test with jasmine have to be checked?
-                // devDependencies["jasmine-jquery"] = "~2.0.6";
             }
         }
 

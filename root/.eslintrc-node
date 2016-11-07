@@ -1,9 +1,8 @@
 {
   "env": {
-    "browser": true
+    "node": true
   },
   "globals": {
-    "MashupPlatform": false,
     "Promise": false,
     "WeakMap": false
   },

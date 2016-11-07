@@ -29,39 +29,21 @@ module.exports = function (grunt) {
             }
         },{% }%}
 
-        {% if (js) { %}jshint: {
-            options: {
-                jshintrc: true
-            },
-            all: {
-                files: {
-                    src: ['src/js/**/*.js']
-                }
-            },
-            grunt: {
-                options: {
-                    jshintrc: '.jshintrc-node'
-                },
-                files: {
-                    src: ['Gruntfile.js']
-                }
-            },
-            test: {
-                options: {
-                    jshintrc: '.jshintrc-jasmine'
-                },
-                files: {
-                    src: ['src/test/**/*.js', '!src/test/fixtures/']
-                }
-            }
-        },
-
-        eslint: {
+        {% if (js) { %}eslint: {
             widget: {
                 src: 'src/js/**/*.js'
             },
             grunt: {
-                src: 'Gruntfile.js'
+                options: {
+                    configFile: '.eslintrc-node'
+                },
+                src: 'Gruntfile.js',
+            },
+            test: {
+                options: {
+                    configFile: '.eslintrc-jasmine'
+                },
+                src: ['src/test/**/*.js', '!src/test/fixtures/']
             }
         },{% } else { %}typescript: {
             base: {
@@ -200,9 +182,9 @@ module.exports = function (grunt) {
                 options: {
                     specs: 'src/test/js/*Spec.js',
                     helpers: ['src/test/helpers/*.js'],
-                    vendor: [{% if (jquery) { %}
+                    vendor: [
                         'node_modules/jquery/dist/jquery.js',
-                        'node_modules/jasmine-jquery/lib/jasmine-jquery.js',{% }%}
+                        'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
                         'node_modules/mock-applicationmashup/lib/vendor/mockMashupPlatform.js',
                         'src/test/vendor/*.js'
                     ]
@@ -239,8 +221,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-wirecloud');
     {% if (bower) { %}grunt.loadNpmTasks('grunt-bower-task');
-    {% }%}{% if (js){ %}grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-jasmine'); // when test?
+    {% }%}{% if (js){ %}grunt.loadNpmTasks('grunt-contrib-jasmine'); // when test?
     grunt.loadNpmTasks('gruntify-eslint');{% } else { %}grunt.loadNpmTasks('grunt-tslint');
     grunt.loadNpmTasks('grunt-typescript');{% }%}
     grunt.loadNpmTasks('grunt-contrib-compress');
@@ -251,8 +232,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [{% if (bower) { %}
         'bower:install',{% }%}{% if (js) { %}
-        'jshint',
-        'jshint:grunt',
         'eslint',
         'jasmine:coverage'{% } else { %}
         'tslint'{% }%}

@@ -152,17 +152,15 @@ exports.template = function(grunt, init, done) {
                 devDependencies["grunt-tslint"] = "^2.4.0";
             }
 
-            if (props.jquery) {
-                devDependencies["jquery"] = "^2.1.1";
-                devDependencies["jasmine-jquery"] = "~2.1.0";
-            }
-
             if (props.bower) {
                 devDependencies["grunt-bower-task"] = "^0.4.0";
             }
 
-            // if test?
             devDependencies['grunt'] = '>=0.4.5';
+
+            // Testing dependencies
+            devDependencies["jquery"] = "^2.1.1";
+            devDependencies["jasmine-jquery"] = "~2.1.0";
             devDependencies["grunt-contrib-jasmine"] = "^1.0.0";
             devDependencies["grunt-template-jasmine-istanbul"] = "^0.4.0";
 

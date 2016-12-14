@@ -46,14 +46,14 @@ This template creates an widget project with a structure similar to the followin
     ├── index.html
     ├── js
     │   ├── main.js
-    │   └── MyAwesomeOperator.js
+    │   └── MyAwesomeWidget.js
     └── test
         ├── fixtures
         │   └── index.html
         ├── helpers
         │   └── empty.js
         └── js
-            └── MyAwesomeOperatorSpec.js
+            └── MyAwesomeWidgetSpec.js
 
 8 directories, 16 files
 ```

@@ -19,7 +19,7 @@ Install other npm dependencies by running: (need root because some libraries use
 sudo npm install
 ```
 
-For build the widget you need download grunt:
+In order to build this widget you need to download grunt:
 
 ```bash
 sudo npm install -g grunt-cli

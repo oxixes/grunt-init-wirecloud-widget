@@ -120,9 +120,9 @@ exports.template = function(grunt, init, done) {
         var bowerdeps = {};
         var bowerdevDependencies = {};
         var devDependencies = {
-            "mock-applicationmashup": "^0.1.3"
+            "grunt": "^1.0.1",
+            "mock-applicationmashup": "^1.0.0-d"
         };
-        props.isgrunt = true; // props.build_system === "grunt";
 
         if (!props.js) {
             devDependencies["typescript"] = "^1.5.0";
@@ -143,35 +143,31 @@ exports.template = function(grunt, init, done) {
             }
         }
 
-        if (props.isgrunt){
-            if (props.js) {
-                devDependencies["gruntify-eslint"] = "^3.1.0";
-            } else {
-                devDependencies["grunt-typescript"] =  "^0.7.0";
-                devDependencies["grunt-tslint"] = "^2.4.0";
-            }
-
-            if (props.bower) {
-                devDependencies["grunt-bower-task"] = "^0.4.0";
-            }
-
-            devDependencies['grunt'] = '>=0.4.5';
-
-            // Testing dependencies
-            devDependencies["jquery"] = "^2.1.1";
-            devDependencies["jasmine-jquery"] = "~2.1.0";
-            devDependencies["grunt-contrib-jasmine"] = "^1.0.0";
-            devDependencies["grunt-template-jasmine-istanbul"] = "^0.4.0";
-
-            devDependencies["grunt-contrib-clean"] = "~1.0.0";
-            devDependencies["grunt-contrib-compress"] = "^1.2.0";
-            devDependencies["grunt-contrib-copy"] = "^1.0.0";
-            devDependencies["grunt-strip-code"] = "^1.0.4";
-            devDependencies["grunt-text-replace"] = "~0.4.0";
-
-            devDependencies["grunt-wirecloud"] = "^0.9.0";
-            devDependencies["wirecloud-config-parser"] = "^0.2.0";
+        if (props.js) {
+            devDependencies["gruntify-eslint"] = "^3.1.0";
+        } else {
+            devDependencies["grunt-typescript"] =  "^0.7.0";
+            devDependencies["grunt-tslint"] = "^2.4.0";
         }
+
+        if (props.bower) {
+            devDependencies["grunt-bower-task"] = "^0.4.0";
+        }
+
+        // Testing dependencies
+        devDependencies["jquery"] = "^2.1.1";
+        devDependencies["jasmine-jquery"] = "~2.1.0";
+        devDependencies["grunt-contrib-jasmine"] = "^1.0.0";
+        devDependencies["grunt-template-jasmine-istanbul"] = "^0.4.0";
+
+        devDependencies["grunt-contrib-clean"] = "^1.1.0";
+        devDependencies["grunt-contrib-compress"] = "^1.4.3";
+        devDependencies["grunt-contrib-copy"] = "^1.0.0";
+        devDependencies["grunt-strip-code"] = "^1.0.6";
+        devDependencies["grunt-text-replace"] = "~0.4.0";
+
+        devDependencies["grunt-wirecloud"] = "^0.9.0";
+        devDependencies["wirecloud-config-parser"] = "^0.2.0";
 
         // Files to copy (and process).
         var files = init.filesToCopy(props);

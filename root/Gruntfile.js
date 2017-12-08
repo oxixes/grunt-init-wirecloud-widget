@@ -176,34 +176,51 @@ module.exports = function (grunt) {
               }
         },{% }%}
 
-        jasmine: {
-            test: {
-                src: ['src/js/*.js', '!src/js/main.js'],
+        karma: {
+            options: {
+                customLaunchers: {
+                    ChromeNoSandbox: {
+                        base: "Chrome",
+                        flags: ['--no-sandbox']
+                    }
+                },
+                files: [
+                    'node_modules/mock-applicationmashup/dist/MockMP.js',
+                    'src/js/*.js',
+                    '!src/js/main.js',
+                    'tests/js/*Spec.js'
+                ],
+                frameworks: ['jasmine'],
+                reporters: ['progress', 'coverage'],
+                browsers: ['Chrome', 'Firefox'],
+                singleRun: true
+            },
+            widget: {
                 options: {
-                    specs: 'src/test/js/*Spec.js',
-                    helpers: ['src/test/helpers/*.js'],
-                    vendor: [
-                        'node_modules/jquery/dist/jquery.js',
-                        'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
-                        'node_modules/mock-applicationmashup/lib/vendor/mockMashupPlatform.js',
-                        'src/test/vendor/*.js'
-                    ]
+                    coverageReporter: {
+                        type: 'html',
+                        dir: 'build/coverage'
+                    },
+                    preprocessors: {
+                        'src/js/*.js': ['coverage'],
+                    }
                 }
             },
-            coverage: {
-                src: '<%= jasmine.test.src %>',
+            widgetci: {
                 options: {
-                    helpers: '<%= jasmine.test.options.helpers %>',
-                    specs: '<%= jasmine.test.options.specs %>',
-                    vendor: '<%= jasmine.test.options.vendor %>',
-                    template: require('grunt-template-jasmine-istanbul'),
-                    templateOptions: {
-                        coverage: 'build/coverage/json/coverage.json',
-                        report: [
-                            {type: 'html', options: {dir: 'build/coverage/html'}},
-                            {type: 'cobertura', options: {dir: 'build/coverage/xml'}},
-                            {type: 'text-summary'}
+                    junitReporter: {
+                        "outputDir": 'build/test-reports'
+                    },
+                    reporters: ['junit', 'coverage'],
+                    browsers: ['ChromeNoSandbox', 'Firefox'],
+                    coverageReporter: {
+                        reporters: [
+                            {type: 'cobertura', dir: 'build/coverage', subdir: 'xml'},
+                            {type: 'lcov', dir: 'build/coverage', subdir: 'lcov'},
                         ]
+                    },
+                    preprocessors: {
+                        "src/js/*.js": ['coverage'],
                     }
                 }
             }
@@ -221,7 +238,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-wirecloud');
     {% if (bower) { %}grunt.loadNpmTasks('grunt-bower-task');
-    {% }%}{% if (js){ %}grunt.loadNpmTasks('grunt-contrib-jasmine'); // when test?
+    {% }%}{% if (js){ %}grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('gruntify-eslint');{% } else { %}grunt.loadNpmTasks('grunt-tslint');
     grunt.loadNpmTasks('grunt-typescript');{% }%}
     grunt.loadNpmTasks('grunt-contrib-compress');
@@ -233,9 +250,18 @@ module.exports = function (grunt) {
     grunt.registerTask('test', [{% if (bower) { %}
         'bower:install',{% }%}{% if (js) { %}
         'eslint',
-        'jasmine:coverage'{% } else { %}
+        'karma:widget'{% } else { %}
         'tslint'{% }%}
     ]);
+
+    grunt.registerTask('ci', [{% if (bower) { %}
+        'bower:install',{% }%}{% if (js) { %}
+        'eslint',
+        'karma:operatorci',{% } else { %}
+        'tslint',{% }%}
+        'coveralls'
+    ]);
+
 
     grunt.registerTask('build', [
         'clean:temp',{% if (!js) { %}

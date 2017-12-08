@@ -19,5 +19,5 @@
     "typings/NGSI/NGSI.d.ts": "{% if (!js && ngsi) { %}typings/NGSI/NGSI.d.ts{% }%}",
     "typings/NGSI/NGSI-tests.ts": "{% if (!js && ngsi) { %}typings/NGSI/NGSI-tests.ts{% }%}",
 
-    "Gruntfile.js": "{% if (isgrunt) { %}Gruntfile.js{% }%}"
+    "Gruntfile.js": "Gruntfile.js"
 }

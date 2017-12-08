@@ -155,10 +155,14 @@ exports.template = function(grunt, init, done) {
         }
 
         // Testing dependencies
-        devDependencies["jquery"] = "^2.1.1";
-        devDependencies["jasmine-jquery"] = "~2.1.0";
-        devDependencies["grunt-contrib-jasmine"] = "^1.0.0";
-        devDependencies["grunt-template-jasmine-istanbul"] = "^0.4.0";
+        devDependencies["jasmine-core"] = "^2.8.0";
+        devDependencies["grunt-karma"] = "^2.0.0";
+        devDependencies["karma"] = "^1.1.0";
+        devDependencies["karma-chrome-launcher"] = "^1.0.1";
+        devDependencies["karma-coverage"] = "^1.0.0";
+        devDependencies["karma-firefox-launcher"] = "^1.0.0";
+        devDependencies["karma-jasmine"] = "^1.0.2";
+        devDependencies["karma-junit-reporter"] = "^1.2.0";
 
         devDependencies["grunt-contrib-clean"] = "^1.1.0";
         devDependencies["grunt-contrib-compress"] = "^1.4.3";

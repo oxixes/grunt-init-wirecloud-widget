@@ -156,6 +156,7 @@ exports.template = function(grunt, init, done) {
 
         // Testing dependencies
         devDependencies["jasmine-core"] = "^2.8.0";
+        devDependencies["grunt-coveralls"] = "^1.0.1";
         devDependencies["grunt-karma"] = "^2.0.0";
         devDependencies["karma"] = "^1.1.0";
         devDependencies["karma-chrome-launcher"] = "^1.0.1";

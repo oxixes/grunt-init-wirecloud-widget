@@ -10,7 +10,7 @@
 
         beforeAll(function () {
             window.MashupPlatform = new MockMP({
-                type: 'operator'
+                type: 'widget'
             });
         });
 

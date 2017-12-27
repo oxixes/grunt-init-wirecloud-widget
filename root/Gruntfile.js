@@ -187,8 +187,10 @@ module.exports = function (grunt) {
                 files: [
                     'node_modules/mock-applicationmashup/dist/MockMP.js',
                     'src/js/*.js',
-                    '!src/js/main.js',
                     'tests/js/*Spec.js'
+                ],
+                exclude: [
+                    'src/js/main.js',
                 ],
                 frameworks: ['jasmine'],
                 reporters: ['progress', 'coverage'],
@@ -262,7 +264,6 @@ module.exports = function (grunt) {
         'tslint',{% }%}
         'coveralls'
     ]);
-
 
     grunt.registerTask('build', [
         'clean:temp',{% if (!js) { %}

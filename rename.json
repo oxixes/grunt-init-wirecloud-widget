@@ -4,9 +4,9 @@
     "src/js/main.js": "{% if (js) { %}src/js/main.js{% }%}",
     "src/js/name.js": "{% if (js) { %}src/js/{%= jsname %}.js{% }%}",
 
-    "tests/fixtures/index.html": "{% if (js) { %}src/test/fixtures/index.html{% }%}",
-    "tests/helpers/empty.js": "{% if (js) { %}src/test/helpers/empty.js{% }%}",
-    "tests/js/nameSpec.js": "{% if (js) { %}src/test/js/{%= jsname %}Spec.js{% }%}",
+    "tests/fixtures/index.html": "{% if (js) { %}tests/fixtures/index.html{% }%}",
+    "tests/helpers/empty.js": "{% if (js) { %}tests/helpers/empty.js{% }%}",
+    "tests/js/nameSpec.js": "{% if (js) { %}tests/js/{%= jsname %}Spec.js{% }%}",
 
     "src/ts/main.ts": "{% if(!js) { %}src/ts/main.ts{% }%}",
     "src/ts/name.ts": "{% if(!js) { %}src/ts/{%= jsname %}.ts{% }%}",

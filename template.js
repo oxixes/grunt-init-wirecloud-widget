@@ -132,7 +132,7 @@ exports.template = function(grunt, init, done) {
 
         if (props.bower) {
             // initialize things only for widgets!
-            devDependencies["bower"] = "^1.3.12";
+            devDependencies["bower"] = "^1.8.4";
 
             if (props.jquery) {
                 // bower
@@ -151,12 +151,12 @@ exports.template = function(grunt, init, done) {
         }
 
         if (props.bower) {
-            devDependencies["grunt-bower-task"] = "^0.4.0";
+            devDependencies["grunt-bower-task"] = "^0.5.0";
         }
 
         // Testing dependencies
         devDependencies["jasmine-core"] = "^2.8.0";
-        devDependencies["grunt-coveralls"] = "^1.0.1";
+        devDependencies["grunt-coveralls"] = "^2.0.0";
         devDependencies["grunt-karma"] = "^2.0.0";
         devDependencies["karma"] = "^1.1.0";
         devDependencies["karma-chrome-launcher"] = "^1.0.1";

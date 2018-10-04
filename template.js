@@ -120,7 +120,7 @@ exports.template = function(grunt, init, done) {
         var bowerdeps = {};
         var bowerdevDependencies = {};
         var devDependencies = {
-            "grunt": "^1.0.1",
+            "grunt": "^1.0.3",
             "mock-applicationmashup": "^1.0.0-d"
         };
 
@@ -157,10 +157,10 @@ exports.template = function(grunt, init, done) {
         // Testing dependencies
         devDependencies["jasmine-core"] = "^2.8.0";
         devDependencies["grunt-coveralls"] = "^2.0.0";
-        devDependencies["grunt-karma"] = "^2.0.0";
-        devDependencies["karma"] = "^1.1.0";
+        devDependencies["grunt-karma"] = "^3.0.0";
+        devDependencies["karma"] = "^3.0.0";
         devDependencies["karma-chrome-launcher"] = "^1.0.1";
-        devDependencies["karma-coverage"] = "^1.0.0";
+        devDependencies["karma-coverage"] = "^1.1.2";
         devDependencies["karma-firefox-launcher"] = "^1.0.0";
         devDependencies["karma-jasmine"] = "^1.0.2";
         devDependencies["karma-junit-reporter"] = "^1.2.0";
@@ -171,7 +171,7 @@ exports.template = function(grunt, init, done) {
         devDependencies["grunt-strip-code"] = "^1.0.6";
         devDependencies["grunt-text-replace"] = "~0.4.0";
 
-        devDependencies["grunt-wirecloud"] = "^0.9.0";
+        devDependencies["grunt-wirecloud"] = "^0.9.4";
         devDependencies["wirecloud-config-parser"] = "^0.2.0";
 
         // Files to copy (and process).

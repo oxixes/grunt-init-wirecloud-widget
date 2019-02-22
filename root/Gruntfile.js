@@ -24,7 +24,8 @@ module.exports = function (grunt) {
                     layout: function (type, component, source) {
                         return type;
                     },
-                    targetDir: './build/lib/lib'
+                    targetDir: './build/lib/lib',
+                    copy: true
                 }
             }
         },{% }%}

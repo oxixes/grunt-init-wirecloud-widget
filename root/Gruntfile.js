@@ -6,8 +6,9 @@
  * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
  */
 
+const { json } = require('stream/consumers');
 var ConfigParser = require('wirecloud-config-parser');
-var parser = new ConfigParser('src/config.xml');
+var parser = new ConfigParser('src/{% if (json) { %}config.json{% } else { %}config.xml{% } %}');
 
 module.exports = function (grunt) {
 
@@ -106,8 +107,9 @@ module.exports = function (grunt) {
                             'doc/**/*',
                             'images/**/*',
                             'index.html',{% if (!js) { %}
-                            "ts/**/*",{% }%}
-                            'config.xml'
+                            "ts/**/*",{% }%}{% if (json) { %}
+                            "config.json",{% } else { %}
+                            "config.xml", {% } %}
                         ]
                     },
                     {
@@ -168,8 +170,8 @@ module.exports = function (grunt) {
               },
 
               version: {
-                  src: 'build/wgt/config.xml',
-                  dest: 'build/wgt/config.xml',
+                  src: 'build/wgt/{% if (json) { %}config.json{% } else { %}config.xml{% } %}',
+                  dest: 'build/wgt/{% if (json) { %}config.json{% } else { %}config.xml{% } %}',
                   replacements: [{
                       from: /version=\".*\"/,
                       to: 'version="<%= metadata.version %><%= isDev %>"'

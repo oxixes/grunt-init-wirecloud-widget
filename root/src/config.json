@@ -1,0 +1,45 @@
+{
+    "authors": [
+        {
+            "email": "{%= author_email %}",
+            "name": "{%= author_name %}"
+        }
+    ],
+    "changelog": "doc/changelog.md",
+    "contents": {
+        "cacheable": true,
+        "charset": "utf-8",
+        "contenttype": "text/html",
+        "src": "index.html",
+        "useplatformstyle": true
+    },
+    "default_lang": "en",
+    "description": "{%= description %}",
+    "doc": "doc/userguide.md",
+    "email": "wirecloud@conwet.com",
+    "homepage": "{%= homepage %}",
+    "image": "",
+    "smartphoneimage": "",
+    "issuetracker": "{%= bugs %}",
+    "license": "{%= licenses %}",
+    "longdescription": "DESCRIPTION.md",
+    "name": "{%= name %}",
+    "preferences": [],
+    "properties": [],
+    "requirements": [
+        {% if (ngsi) { %}
+        {
+            "name": "NGSI"
+        }
+        {% } %}
+    ],
+    "title": "{%= project_name %}",
+    "translations": {},
+    "type": "widget",
+    "vendor": "{%= vendor %}",
+    "version": "{%= version %}",
+    "widget_height": "300px",
+    "widget_width": "30%",
+    "wiring": {
+    }
+}

@@ -17,6 +17,9 @@
     "typings/MashupPlatform/tsconfig.json": "{% if (!js) { %}typings/MashupPlatform/tsconfig.json{% }%}",
     "typings/NGSI/NGSI.d.ts": "{% if (!js && ngsi) { %}typings/NGSI/NGSI.d.ts{% }%}",
     "typings/NGSI/NGSI-tests.ts": "{% if (!js && ngsi) { %}typings/NGSI/NGSI-tests.ts{% }%}",
+    
+    "src/config.xml": "{% if (!json) { %}src/config.xml{% }%}",
+    "src/config.json": "{% if (json) { %}src/config.json{% }%}",
 
     "Gruntfile.js": "Gruntfile.js"
 }

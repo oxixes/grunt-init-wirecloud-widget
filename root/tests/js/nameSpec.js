@@ -15,16 +15,17 @@
     describe("{%= jsname %}", function () {
 
         var widget;
+        var MashupPlatform;
 
         beforeAll(function () {
-            window.MashupPlatform = new MockMP({
+            MashupPlatform = new MockMP({
                 type: 'widget'
             });
         });
 
         beforeEach(function () {
             MashupPlatform.reset();
-            widget = new {%= jsname %}();
+            widget = new {%= jsname %}(MashupPlatform, undefined, {});
         });
 
         it("Dummy test", function () {

@@ -8,7 +8,7 @@
 
 /* exported {%= jsname %} */
 
-var {%= jsname %} = (function () {
+(function () {
 
     "use strict";
 
@@ -16,22 +16,22 @@ var {%= jsname %} = (function () {
     // CLASS DEFINITION
     // =========================================================================
 
-    var {%= jsname %} = function {%= jsname %}() {
-        MashupPlatform.prefs.registerCallback(function (new_preferences) {
+    class {%= jsname %} {
+        constructor(MashupPlatform, shadowDOM, extra) {
+            this.MashupPlatform = MashupPlatform;
+            this.shadowDOM = shadowDOM;
 
-        }.bind(this));
-    };
+            MashupPlatform.prefs.registerCallback(function (new_preferences) {
 
-    // =========================================================================
-    // PRIVATE MEMBERS
-    // =========================================================================
+            }.bind(this));
+        }
+    }
+
+    // We define the class as part of the window object so that it can be instantiated by Wirecloud
+    window["{%= jsname %}"] = {%= jsname %};
 
     /* test-code */
-    {%= jsname %}.prototype = {
-    };
 
     /* end-test-code */
-
-    return {%= jsname %};
 
 })();

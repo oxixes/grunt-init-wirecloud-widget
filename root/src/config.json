@@ -5,6 +5,7 @@
             "name": "{%= author_name %}"
         }
     ],
+    "macversion": 2,
     "changelog": "doc/changelog.md",
     "contents": {
         "cacheable": true,
@@ -32,6 +33,9 @@
             "name": "NGSI"
         }
         {% } %}
+    ],
+    "js_files": [
+        "js/{%= jsname %}.js"
     ],
     "title": "{%= project_name %}",
     "translations": {},

@@ -115,4 +115,6 @@ declare module "MashupPlatform" {
     interface onExceptionCB {
         (response: Object, exception: Error): void;
     }
+
+    var location: string;
 }

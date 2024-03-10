@@ -6,7 +6,6 @@
  * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
  */
 
-const { json } = require('stream/consumers');
 var ConfigParser = require('wirecloud-config-parser');
 var parser = new ConfigParser('src/{% if (json) { %}config.json{% } else { %}config.xml{% } %}');
 
@@ -109,7 +108,7 @@ module.exports = function (grunt) {
                             'index.html',{% if (!js) { %}
                             "ts/**/*",{% }%}{% if (json) { %}
                             "config.json",{% } else { %}
-                            "config.xml", {% } %}
+                            "config.xml",{% } %}
                         ]
                     },
                     {

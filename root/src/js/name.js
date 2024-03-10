@@ -6,7 +6,7 @@
  * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
  */
 
-/* exported {%= jsname %} */
+/* exported {%= entrypoint %} */
 
 (function () {
 
@@ -16,7 +16,7 @@
     // CLASS DEFINITION
     // =========================================================================
 
-    class {%= jsname %} {
+    class {%= entrypoint %} {
         constructor(MashupPlatform, shadowDOM, extra) {
             this.MashupPlatform = MashupPlatform;
             this.shadowDOM = shadowDOM;
@@ -28,7 +28,7 @@
     }
 
     // We define the class as part of the window object so that it can be instantiated by Wirecloud
-    window["{%= jsname %}"] = {%= jsname %};
+    window.{%= entrypoint %} = {%= entrypoint %};
 
     /* test-code */
 

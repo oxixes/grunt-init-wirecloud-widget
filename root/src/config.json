@@ -37,6 +37,7 @@
     "js_files": [
         "js/{%= jsname %}.js"
     ],
+    "entrypoint": "js/{%= entrypoint %}.js",
     "title": "{%= project_name %}",
     "translations": {},
     "type": "widget",

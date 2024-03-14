@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <widget xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="{%= vendor %}" name="{%= name %}" version="{%= version %}">
 
+    <macversion>2</macversion>
+
     <details>
         <title>{%= project_name %}</title>
         <homepage>{%= homepage %}</homepage>
@@ -27,6 +29,10 @@
     </wiring>
 
     <contents src="index.html"/>
+    <scripts>
+        <script src="js/{%= jsname %}.js"/>
+    </scripts>
+    <entrypoint name="{%= entrypoint %}"/>
     <rendering height="300px" width="30%"/>
 
 </widget>

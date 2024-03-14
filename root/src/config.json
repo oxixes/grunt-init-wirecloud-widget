@@ -5,6 +5,7 @@
             "name": "{%= author_name %}"
         }
     ],
+    "macversion": 2,
     "changelog": "doc/changelog.md",
     "contents": {
         "cacheable": true,
@@ -33,6 +34,10 @@
         }
         {% } %}
     ],
+    "js_files": [
+        "js/{%= jsname %}.js"
+    ],
+    "entrypoint": "js/{%= entrypoint %}.js",
     "title": "{%= project_name %}",
     "translations": {},
     "type": "widget",

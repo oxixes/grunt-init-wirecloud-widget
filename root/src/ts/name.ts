@@ -27,4 +27,8 @@ export class Widget {
     }
 }
 
-(<any>Wirecloud).registerWidgetClass((<any>document).currentScript, Widget);
+if (!(<any>window).Wirecloud) {
+    (<any>window).Widget = Widget;
+} else {
+    (<any>window).Wirecloud.registerWidgetClass((<any>document).currentScript, Widget);
+}

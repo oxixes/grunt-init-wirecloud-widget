@@ -25,7 +25,12 @@
         }
     }
 
-    Wirecloud.registerWidgetClass(script, Widget);
+    if (!('Wirecloud' in window)) {
+        // For testing purposes
+        window.Widget = Widget;
+    } else {
+        Wirecloud.registerWidgetClass(script, Widget);
+    }
 
     /* test-code */
 

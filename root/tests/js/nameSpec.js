@@ -23,11 +23,7 @@
                 type: 'widget'
             });
 
-            window.Wirecloud = {
-                registerWidgetClass: function (script, widgetClass) {
-                    Widget = widgetClass;
-                }
-            }
+            Widget = window.Widget;
         });
 
         beforeEach(function () {
